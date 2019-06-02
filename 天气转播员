@@ -1,0 +1,38 @@
+import com.sun.deploy.net.HttpResponse;
+import sun.net.www.http.HttpClient;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+
+
+        public static void main(String[] args)
+        {
+            String host = "https://jisutqybmf.market.alicloudapi.com";
+            String path = "/weather/query";
+            String method = "GET";
+            String appcode = "460ef31128624ce4996ac0644f80fa8b";
+            Map<String, String> headers = new HashMap<String, String>();
+            headers.put("Authorization", "APPCODE " + appcode);
+            Map<String, String> querys = new HashMap<String, String>();
+            querys.put("city", "安顺");
+            querys.put("citycode", "citycode");
+            querys.put("cityid", "cityid");
+            querys.put("ip", "ip");
+            querys.put("location", "location");
+
+
+            try
+            {
+                HttpResponse response = HttpClient.doGet(host, path, method, headers, querys);
+
+                System.out.println(response.toString());
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
